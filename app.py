@@ -1,11 +1,19 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from st_pages import Page, show_pages
+
+st.set_page_config(layout="wide")
+show_pages(
+     [
+          Page("app.py", "HOME", "🏠"),
+          Page("pages/map.py", "MAP", "🎇"),
+          Page("pages/tab.py", "TAB", "🎈"),
+     ]
+)
 
 # --- 01
 # https://docs.streamlit.io/library/api-reference/write-magic
-st.set_page_config(layout="wide")
+
 st.markdown('Helli Streamlit')
 st.title('Layout and styling')
 st.write('''
