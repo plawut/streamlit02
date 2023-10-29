@@ -12,9 +12,18 @@ st.write('''
 San Francisco Dataset !!!!
 ''')
 tree_df = pd.read_csv('trees.csv')
+df_dbh_grouped = pd.DataFrame(tree_df.groupby(['dbh']).count()['tree_id'])
+df_dbh_grouped.columns = ['tree_count']
+
+owners = st.sidebar.multiselect('Tree Owner Filter', tree_df['caretaker'].unique())
+
+if owners:
+     tree_df = tree_df[tree_df['caretaker'].isin(owners)]
+
 
 df_dbh_grouped = pd.DataFrame(tree_df.groupby(['dbh']).count()['tree_id'])
 df_dbh_grouped.columns = ['tree_count']
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
