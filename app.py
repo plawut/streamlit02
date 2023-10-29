@@ -5,10 +5,25 @@ import matplotlib.pyplot as plt
 
 # --- 01
 # https://docs.streamlit.io/library/api-reference/write-magic
-st.markdown('สวัสดี! **Streamlit**')
-st.write('จากโค้ด', '`st.markdown("สวัสดี!")`')
-st.write(pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40],
- }))
+st.markdown('Helli Streamlit')
+st.title('Layout and styling')
+st.write('''
+San Francisco Dataset !!!!
+''')
+col1, col2, col3 = st.columns(3)
+with col1:
+     st.write('column 1')
+with col2:
+     st.write('column 2')
+with col3:
+     st.write('column 3')
+tree_df = pd.read_csv('trees.csv')
+df_dbh_grouped = pd.DataFrame(tree_df.groupby(['dbh']).count()['tree_id'])
+df_dbh_grouped.columns = ['tree_count']
+st.line_chart(df_dbh_grouped)
+st.caption('กราฟแสดงจํานวนต้นไม้ทั้งหมดซึ่งจัดกลุ่มตามเส้นผ่านศูนย์กลาง')
+st.title('แปรผล')
+st.write('''
+ส่วนในต้นไม้ใน San Fransisco มีเส้นผ่านศูนย์กลางขนาด 3 ฟุต
+''')
 st.divider()
