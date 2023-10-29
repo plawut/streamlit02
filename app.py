@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 # --- 01
 # https://docs.streamlit.io/library/api-reference/write-magic
+st.set_page_config(layout="wide")
 st.markdown('Helli Streamlit')
 st.title('Layout and styling')
 st.write('''
