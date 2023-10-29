@@ -45,19 +45,23 @@ st.write('''
 
 st.divider()
 
-tab1, tab2, tab3 = st.tabs(['Line Chart', 'Bar Chart', 'Area Chart'])
-with tab1:
-     st.write('Tab 1')
-     st.line_chart(df_dbh_grouped)
-with tab2:
-     st.write('Tab 2')
-     st.bar_chart(df_dbh_grouped)
-with tab3:
-     st.write('tab 3')
-     st.area_chart(df_dbh_grouped)
+# tab1, tab2, tab3 = st.tabs(['Line Chart', 'Bar Chart', 'Area Chart'])
+# with tab1:
+#      st.write('Tab 1')
+#      st.line_chart(df_dbh_grouped)
+# with tab2:
+#      st.write('Tab 2')
+#      st.bar_chart(df_dbh_grouped)
+# with tab3:
+#      st.write('tab 3')
+#      st.area_chart(df_dbh_grouped)
+#
+# st.caption('กราฟแสดงจํานวนต้นไม้ทั้งหมดซึ่งจัดกลุ่มตามเส้นผ่านศูนย์กลาง')
+# st.title('แปรผล')
+# st.write('''
+# ส่วนในต้นไม้ใน San Fransisco มีเส้นผ่านศูนย์กลางขนาด 3 ฟุต
+# ''')
 
-st.caption('กราฟแสดงจํานวนต้นไม้ทั้งหมดซึ่งจัดกลุ่มตามเส้นผ่านศูนย์กลาง')
-st.title('แปรผล')
-st.write('''
-ส่วนในต้นไม้ใน San Fransisco มีเส้นผ่านศูนย์กลางขนาด 3 ฟุต
-''')
+tree_df = tree_df.dropna(subset=['longitude','latitude'])
+tree_df = tree_df.sample(n = 1000, replace = True)
+st.map(tree_df)
